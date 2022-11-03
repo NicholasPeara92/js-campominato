@@ -67,6 +67,7 @@ btnGenerator.addEventListener('click', function() {
     
     const bombs = getRndInteger( 1 , numMax);
     let i = 0;
+    const bombList = createBombList(bombs);
     while ( i < 16 ) {
         // genero un numero casuale che sarà l'indice dell'elemento dell'array bingoNumbers
         const indexRandom = getRndInteger(i, bombList.length);
