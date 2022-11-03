@@ -32,7 +32,6 @@ function createBombList(bombNumber) {
 
 // VARIABILI
 let score = 0;
-const minesNum = 16;
 
 
 
@@ -40,6 +39,7 @@ const minesNum = 16;
 const btnGenerator = document.querySelector(".btn-generator");
 
 btnGenerator.addEventListener('click', function() {
+    let bombList = [];
     let diff = document.getElementById("diff").value;
     const boardContainer = document.querySelector(".board");
     
@@ -59,13 +59,19 @@ btnGenerator.addEventListener('click', function() {
         }
         //evento click
         boardCell.addEventListener("click", function(){
-            console.log(this.innerHTML);
             this.classList.add("clicked");
+            let number = parseInt(boardCell.innerHTML);
+            if (bombList.includes(number) ) {
+                boardCell.classList.add("bomb-here");
+                alert("hai perso");
+            } else {
+                score+=1;
+                console.log(score);
+            }
         });
         boardContainer.append(boardCell);
     }
     
-    let bombList = [];
     
     do {
       let bombs = getRndInteger( 1 , numMax);
@@ -75,6 +81,7 @@ btnGenerator.addEventListener('click', function() {
       });
     } while (bombList.length < 16);
     console.log(bombList);
+
 });
 
 

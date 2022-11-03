@@ -69,3 +69,7 @@ footer {
 .clicked {
     background-color: lightskyblue;
 }
+
+.bomb-here {
+    background-color: red;
+}
