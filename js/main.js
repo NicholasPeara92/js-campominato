@@ -91,6 +91,8 @@ btnGenerator.addEventListener('click', function() {
 
 });
 
+const btnAgain = document.querySelector(".btn-again");
 
-
-
+btnAgain.addEventListener('click', function() {
+    window.location.reload();
+});
