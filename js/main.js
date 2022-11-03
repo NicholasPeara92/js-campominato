@@ -22,15 +22,20 @@ function getRndInteger(min, max) {
 
 function createBombList(bombNumber) {
     const array = [];
-    const minesNum = 16;
-    let i = 1;
-    while( i <= minesNum ) {
+    let i = 0;
+    while( i < 1 ) {
         array.push(bombNumber);
-        
-        i++
+        i++ 
     }
     return array;
 }
+
+// VARIABILI
+let score = 0;
+const minesNum = 16;
+
+
+
 // seleziono il contenitore
 const btnGenerator = document.querySelector(".btn-generator");
 
@@ -61,9 +66,20 @@ btnGenerator.addEventListener('click', function() {
     }
     
     const bombs = getRndInteger( 1 , numMax);
-    const minesList = createBombList(bombs);
-    console.log(bombs);
-    console.log(minesList);
+    let i = 0;
+    const bombList = createBombList(bombs);
+    while ( i < 16 ) {
+        
+        // genero un numero casuale che sarà l'indice dell'elemento dell'array bingoNumbers
+        const indexRandom = getRndInteger(i, bombList.length);
+        // salvo l'elemento generato in una variabile
+        const numerRandom = bombList[indexRandom];
+        i++;
+        
+    }
+    console.log(bombList);
+    return bombList;
+    
 });
 
 
