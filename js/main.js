@@ -65,25 +65,18 @@ btnGenerator.addEventListener('click', function() {
         boardContainer.append(boardCell);
     }
     
-    const bombs = getRndInteger( 1 , numMax);
-    let i = 0;
-    const bombList = createBombList(bombs);
-    while ( i < 16 ) {
-        // genero un numero casuale che sarà l'indice dell'elemento dell'array bingoNumbers
-        const indexRandom = getRndInteger(i, bombList.length);
-        // salvo l'elemento generato in una variabile
-        const numerRandom = bombList[indexRandom];
-        i++;
-        
-        if ( bombList.length < 16 && bombs !== bombList[i]) {
-            // bombList.push(bombs);
-            createBombList(bombs);
-        }
-        
-    }
-    console.log(bombList);
-    return bombList;
+    let bombList = [];
     
+    do {
+      let bombs = getRndInteger( 1 , numMax);
+      bombList.push(bombs);
+      bombList = bombList.filter((item, index) => {
+        return bombList.indexOf(item) === index
+      });
+    } while (bombList.length < 16);
+    console.log(bombList);
 });
+
+
 
 
