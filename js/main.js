@@ -58,18 +58,25 @@ btnGenerator.addEventListener('click', function() {
             
         }
         //evento click
+        const punteggio = document.createElement("h2");
+        punteggio.innerHTML = `Il tuo punteggio è di ${score}`;
         boardCell.addEventListener("click", function(){
             this.classList.add("clicked");
             let number = parseInt(boardCell.innerHTML);
             if (bombList.includes(number) ) {
                 boardCell.classList.add("bomb-here");
-                alert("hai perso");
+                alert(`hai perso! Il tuo punteggio è di ${score}`);
+            } else if ( score === numMax - 16) {
+                alert(`Complimenti, hai vinto! Il tuo punteggio è di ${score}`);
             } else {
                 score+=1;
                 console.log(score);
             }
+            boardCell.removeEventListener("click", function(){
+            });
         });
         boardContainer.append(boardCell);
+        
     }
     
     
