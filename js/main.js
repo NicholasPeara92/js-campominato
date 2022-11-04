@@ -66,8 +66,10 @@ btnGenerator.addEventListener('click', function() {
             if (bombList.includes(number) ) {
                 boardCell.classList.add("bomb-here");
                 alert(`hai perso! Il tuo punteggio è di ${score}`);
+                window.location.reload();
             } else if ( score === numMax - 16) {
                 alert(`Complimenti, hai vinto! Il tuo punteggio è di ${score}`);
+                window.location.reload();
             } else {
                 score+=1;
                 console.log(score);
