@@ -40,6 +40,7 @@ const btnGenerator = document.querySelector(".btn-generator");
 
 btnGenerator.addEventListener('click', function() {
     let bombList = [];
+    let gameOver = false;
     let diff = document.getElementById("diff").value;
     const boardContainer = document.querySelector(".board");
     
@@ -61,21 +62,23 @@ btnGenerator.addEventListener('click', function() {
         const punteggio = document.createElement("h2");
         punteggio.innerHTML = `Il tuo punteggio è di ${score}`;
         boardCell.addEventListener("click", function(){
+            if(gameOver){
+                return
+            }
             this.classList.add("clicked");
             let number = parseInt(boardCell.innerHTML);
             if (bombList.includes(number) ) {
                 boardCell.classList.add("bomb-here");
                 alert(`hai perso! Il tuo punteggio è di ${score}`);
-                window.location.reload();
+                gameOver = true;
             } else if ( score === numMax - 16) {
                 alert(`Complimenti, hai vinto! Il tuo punteggio è di ${score}`);
-                window.location.reload();
+                gameOver = true;
             } else {
                 score+=1;
                 console.log(score);
             }
-            boardCell.removeEventListener("click", function(){
-            });
+            
         });
         boardContainer.append(boardCell);
         
